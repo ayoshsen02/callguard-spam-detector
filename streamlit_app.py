@@ -1,21 +1,20 @@
 """
 streamlit_app.py — CallGuard Spam Detector
-Run locally: streamlit run streamlit_app.py
 """
 import sys
 import os
 import re
+import nltk
+
+# Download NLTK data (needed on Streamlit Cloud)
+nltk.download('punkt', quiet=True)
+nltk.download('stopwords', quiet=True)
+nltk.download('punkt_tab', quiet=True)
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "backend"))
 
 import streamlit as st
 from ml.predictor import predict
-
-st.set_page_config(
-    page_title="CallGuard – AI Spam Detector",
-    page_icon="🛡️",
-    layout="centered",
-)
 
 # ── Custom CSS ────────────────────────────────────────────────────────────
 st.markdown("""

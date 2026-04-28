@@ -4,10 +4,6 @@ venv/
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
-backend/models/
-*.pkl
-*.joblib
 
 # Environment files
 .env
@@ -20,7 +16,6 @@ frontend/.env
 
 # VS Code
 .vscode/
-*.code-workspace
 
 # OS
 .DS_Store

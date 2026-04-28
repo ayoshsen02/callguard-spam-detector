@@ -1,0 +1,74 @@
+{
+  "folders": [
+    { "name": "🛡️ CallGuard Root",    "path": "." },
+    { "name": "⚙️  Backend (FastAPI)", "path": "./backend" },
+    { "name": "⚛️  Frontend (React)",  "path": "./frontend" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:⚙️  Backend (FastAPI)}/venv/bin/python",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "files.associations": { "*.jsx": "javascriptreact" },
+    "emmet.includeLanguages": { "javascript": "javascriptreact" },
+    "terminal.integrated.cwd": "${workspaceFolder:🛡️ CallGuard Root}"
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "🐍 Backend: FastAPI",
+        "type": "python",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": ["main:app", "--reload", "--port", "8000"],
+        "cwd": "${workspaceFolder:⚙️  Backend (FastAPI)}",
+        "envFile": "${workspaceFolder:⚙️  Backend (FastAPI)}/.env",
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "🤖 Train ML Model",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder:⚙️  Backend (FastAPI)}/ml/train_model.py",
+        "cwd": "${workspaceFolder:⚙️  Backend (FastAPI)}",
+        "console": "integratedTerminal"
+      }
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "1️⃣  Train Model",
+        "type": "shell",
+        "command": "cd backend && python ml/train_model.py",
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "new" }
+      },
+      {
+        "label": "2️⃣  Start Backend",
+        "type": "shell",
+        "command": "cd backend && uvicorn main:app --reload --port 8000",
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "new" }
+      },
+      {
+        "label": "3️⃣  Start Frontend",
+        "type": "shell",
+        "command": "cd frontend && npm run dev",
+        "group": "build",
+        "presentation": { "reveal": "always", "panel": "new" }
+      }
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "bradlc.vscode-tailwindcss",
+      "dsznajder.es7-react-js-snippets",
+      "esbenp.prettier-vscode",
+      "ms-python.black-formatter"
+    ]
+  }
+}
